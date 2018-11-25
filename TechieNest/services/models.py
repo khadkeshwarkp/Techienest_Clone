@@ -11,7 +11,7 @@ class Commercial_products(models.Model):
         return self.title
 
 class Educational_products(models.Model):
-    title=model.CharField(max_length=35)
+    title=models.CharField(max_length=35)
     slug = models.SlugField(
         max_length=31,
         unique=True)
@@ -20,8 +20,8 @@ class Educational_products(models.Model):
         return self.title
 
 class Products(models.Model):
-    commercial_products=models.OneToMany(Commercial_products)
-    educational_products=models.OneToMany(Educational_products)
+    commercial_products=models.ForeignKey(Commercial_products, on_delete = models.CASCADE)
+    educational_products=models.ForeignKey(Educational_products, on_delete = models.CASCADE)
 
 class Online_classroom(models.Model):
       title=models.CharField(max_length=35)
@@ -42,8 +42,8 @@ class Offline_classroom(models.Model):
           return self.title
 
 class Trainings(models.Model):
-    online_classroom=models.OneToMany(Online_classroom)
-    offline_classroom=models.OneToMany(Offline_classroom)
+    online_classroom=models.ForeignKey(Online_classroom, on_delete = models.CASCADE)
+    offline_classroom=models.ForeignKey(Offline_classroom, on_delete = models.CASCADE)
 
 class Trending_now(models.Model):
       title=models.CharField(max_length=35)
@@ -100,12 +100,12 @@ class Labs(models.Model):
           return self.title
 
 class Workshops(models.Model):
-    trending_now=models.OneToMany(Trending_now)
-    embedded_systems=models.OneToMany(Embedded_systems)
-    robotics=models.OneToMany(Robotics)
-    matlab=models.OneToMany(Matlab)
-    automation=models.OneToMany(Automation)
-    labs=models.OneToMany(Labs)
+    trending_now=models.ForeignKey(Trending_now, on_delete = models.CASCADE)
+    embedded_systems=models.ForeignKey(Embedded_systems, on_delete = models.CASCADE)
+    robotics=models.ForeignKey(Robotics, on_delete = models.CASCADE)
+    matlab=models.ForeignKey(Matlab, on_delete = models.CASCADE)
+    automation=models.ForeignKey(Automation, on_delete = models.CASCADE)
+    labs=models.ForeignKey(Labs, on_delete = models.CASCADE)
 
 
 # Create your models here.

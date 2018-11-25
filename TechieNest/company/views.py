@@ -1,24 +1,25 @@
 from django.shortcuts import render
+from django.views import generic
 
-class AboutView(View):
+class AboutView(generic.DetailView):
     template_name="company/about.html"
 
     def get(self,request):
         return render(request,self.template_name)
 
-class CareerView(View):
+class CareerView(generic.DetailView):
     template_name="company/career.html"
 
     def get(self,request):
         return render(request,self.template_name)
 
-class PartnerView(View):
+class PartnerView(generic.DetailView):
     template_name="company/partner.html"
 
     def get(self,request):
         return render(request,self.template_name)
 
-class ContactView(View):
+class ContactView(generic.DetailView):
     template_name="company/contact.html"
 
     def get(self,request):
