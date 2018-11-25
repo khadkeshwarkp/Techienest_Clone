@@ -5,13 +5,13 @@ class Post(models.Model):
     title=models.CharField(max_length=20)
     image=models.ImageField(null=False)
     Text_Field=models.CharField(max_length = 500)
-    Slug = models.SlugField(max_length=63,help_text='A Unique Label',unique_for_month='pub_date')
     pub_date = models.DateField('date published',auto_now_add=True)
+    Slug = models.SlugField(max_length=63,help_text='A Unique Label',unique_for_month='pub_date')
     creator=models.CharField(max_length=15)
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    author = models.CharField(max_length=26,null=False)
+    author = models.CharField(max_length=26,null=False,help_text='Your username')
     email=models.EmailField(max_length=30,null=False)
     website=models.URLField(max_length=200,null=True)
     text = models.TextField()
