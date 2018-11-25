@@ -22,8 +22,11 @@ from company import urls as company_urls
 #from franchise import urls as franchise_urls
 from jap import urls as jap_urls
 from services import urls as services_urls
+from django.views.generic.base import TemplateView
+
 
 urlpatterns = [
+    path('', TemplateView.as_view(template_name='TechieNest/index.html'), name='index'),
     path('admin/', admin.site.urls),
     re_path(r'^blog/',include(blog_urls)),
     re_path(r'^company/',include(company_urls)),
